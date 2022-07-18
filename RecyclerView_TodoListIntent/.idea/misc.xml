@@ -13,6 +13,7 @@
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/drawable/background_view.xml" value="0.1905" />
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/drawable/background_view_blu.xml" value="0.1905" />
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/drawable/background_view_button_nor.xml" value="0.146" />
+        <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/drawable/background_view_button_sig.xml" value="0.2045" />
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/drawable/background_view_button_yel.xml" value="0.146" />
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/drawable/background_view_gre.xml" value="0.1905" />
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/drawable/background_view_nor.xml" value="0.146" />
@@ -29,9 +30,11 @@
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/drawable/title_todo.xml" value="0.1905" />
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/drawable/tv_list.xml" value="0.1905" />
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/drawable/type_todo_background.xml" value="0.1905" />
-        <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/activity_item_info.xml" value="0.176" />
-        <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/activity_main.xml" value="0.136" />
+        <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/activity_item_info.xml" value="0.152" />
+        <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/activity_main2.xml" value="0.12" />
+        <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/item_list.xml" value="0.176" />
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/item_list_blu.xml" value="0.1" />
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/item_list_gre.xml" value="0.1" />
