@@ -2,14 +2,13 @@ package org.techtown.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.techtown.Activity.databinding.ActivityLoginBinding;
-import org.techtown.Activity.databinding.ActivityMainBinding;
 
 import Api.ApiProvider;
 import Api.ServerApi;
@@ -21,6 +20,7 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String TAG = "ContentValues";
     private ActivityLoginBinding binding;
 
     @Override
@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.tvLoginRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -45,20 +45,20 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void Singin(){
+    private void Singin() {
         String account_id = binding.etLoginTypeID.getText().toString();
         String password = binding.etLoginTypePW.getText().toString();
 
-        if (account_id.length() == 0){
+        if (account_id.length() == 0) {
             Toast.makeText(LoginActivity.this, "아이디를 입력하세요.", Toast.LENGTH_SHORT).show();
-        }else if (password.length() == 0){
+        } else if (password.length() == 0) {
             Toast.makeText(LoginActivity.this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show();
-        }else{
+        } else {
             LoginResponse();
         }
     }
 
-    public void LoginResponse(){
+    public void LoginResponse() {
         String account_id = binding.etLoginTypeID.getText().toString();
         String password = binding.etLoginTypePW.getText().toString();
 
@@ -67,9 +67,10 @@ public class LoginActivity extends AppCompatActivity {
         serverApi.login(loginRequest).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                if (response.isSuccessful()){
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "🎉로그인에 성공했습니다!🎉", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 }
             }
@@ -77,16 +78,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "로그인에 실패했습니다..", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onFailure: " + t);
             }
         });
 
 
-
-
     }
-
-
-
 
 
 }

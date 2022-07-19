@@ -87,7 +87,7 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <TextView
+                    <EditText
                         android:id="@+id/et_login_typeID"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -98,11 +98,11 @@
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/background_view_nor"
                         android:padding="4dp"
-                        android:text="id를 입력하세요"
+                        android:hint="id를 입력하세요"
                         android:textColor="@color/gray"
                         android:textSize="20sp" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/et_login_typePW"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -113,7 +113,8 @@
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/background_view_nor"
                         android:padding="4dp"
-                        android:text="비밀번호를 입력하세요"
+                        android:hint="비밀번호를 입력하세요"
+                        android:inputType="textPassword"
                         android:textColor="@color/gray"
                         android:textSize="20sp" />
 
