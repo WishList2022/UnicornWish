@@ -1,4 +1,4 @@
-package org.techtown.recyclerview_todolistintent;
+package org.techtown.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
+
+import Activity.InfoActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,14 +45,13 @@ public class MainActivity extends AppCompatActivity {
                     mainAdapter.notifyDataSetChanged();
                     et.setText("");
                 }*/
-                Intent intent = new Intent(MainActivity.this, InfoActivity.class);
-                startActivity(intent);
             }
         });
     }
 
 
     void moveSee() {
-
+        Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+        startActivity(intent);
     }
 }

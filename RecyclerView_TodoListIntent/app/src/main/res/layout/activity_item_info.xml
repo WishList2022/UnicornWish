@@ -6,7 +6,7 @@
     android:background="@drawable/background_all"
     android:orientation="vertical"
     android:padding="12dp"
-    tools:context=".InfoActivity">
+    tools:context="Activity.InfoActivity">
 
     <LinearLayout
         android:id="@+id/title_linearlayout"

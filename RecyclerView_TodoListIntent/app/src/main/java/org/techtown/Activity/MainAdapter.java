@@ -1,4 +1,4 @@
-package org.techtown.recyclerview_todolistintent;
+package org.techtown.Activity;
 
 import static android.content.ContentValues.TAG;
 
