@@ -11,7 +11,7 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-import Activity.InfoActivity;
+
 
 public class MainActivity extends AppCompatActivity {
 
