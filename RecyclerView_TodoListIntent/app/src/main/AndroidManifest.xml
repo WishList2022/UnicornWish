@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_main_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclerView_TodoListIntent">
-<<<<<<< Updated upstream
         <activity android:name="InfoActivity"
             android:exported="true">
         </activity>
@@ -23,22 +22,8 @@
         <activity android:name=".RegisterActivity"
                 android:exported="true">
         </activity>
-        <activity android:name=".SplashActivity"
-=======
-        <activity android:name=".InfoActivity"
-            android:exported="true">
-
-        </activity>
-        <activity android:name=".LoginActivity"
-            android:exported="true">
-
-        </activity>
-        <activity android:name=".RegisterActivity"
-            android:exported="true">
-        </activity>
         <activity
             android:name="org.techtown.Activity.MainActivity"
->>>>>>> Stashed changes
             android:exported="true">
         </activity>
         <activity android:name=".SplashActivity"
@@ -50,10 +35,6 @@
             </intent-filter>
 
         </activity>
-        <activity
-            android:name="org.techtown.Activity.MainActivity"
-            android:exported="true">
-           </activity>
     </application>
 
 </manifest>

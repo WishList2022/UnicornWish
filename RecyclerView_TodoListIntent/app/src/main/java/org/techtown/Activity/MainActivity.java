@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     mainAdapter.notifyDataSetChanged();
                     et.setText("");
                 }*/
+                moveSee();
             }
         });
     }

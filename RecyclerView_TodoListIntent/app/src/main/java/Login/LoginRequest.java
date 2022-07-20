@@ -6,6 +6,8 @@ public class LoginRequest {
     private String password;
 
     public LoginRequest(String account_id, String password) {
+        this.account_id = account_id;
+        this.password = password;
     }
 
     public String getAccount_id() {

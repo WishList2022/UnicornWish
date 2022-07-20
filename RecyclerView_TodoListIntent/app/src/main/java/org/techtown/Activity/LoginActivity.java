@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+
     private void Singin() {
         String account_id = binding.etLoginTypeID.getText().toString();
         String password = binding.etLoginTypePW.getText().toString();
@@ -54,19 +55,22 @@ public class LoginActivity extends AppCompatActivity {
         } else if (password.length() == 0) {
             Toast.makeText(LoginActivity.this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show();
         } else {
-            LoginResponse();
+            LoginResponse(account_id, password);
+            Log.d(TAG, "account_id: " + account_id);
+            Log.d(TAG, "password: " + password);
         }
     }
 
-    public void LoginResponse() {
-        String account_id = binding.etLoginTypeID.getText().toString();
-        String password = binding.etLoginTypePW.getText().toString();
+    public void LoginResponse(String account_id, String password) {
+        //String account_id = binding.etLoginTypeID.getText().toString();
+        //String password = binding.etLoginTypePW.getText().toString();
 
+        Log.d(TAG, "LoginResponse: 실행됨");
         LoginRequest loginRequest = new LoginRequest(account_id, password);
         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
-        serverApi.login(loginRequest).enqueue(new Callback<LoginResponse>() {
+        serverApi.login(loginRequest).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 Log.d(TAG, "onResponse: " + response.code());
                 if (response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "🎉로그인에 성공했습니다!🎉", Toast.LENGTH_SHORT).show();
@@ -76,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "로그인에 실패했습니다..", Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "onFailure: " + t);
             }
@@ -84,6 +88,5 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-
-
 }
+

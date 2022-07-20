@@ -3,6 +3,7 @@ package org.techtown.Activity;
 import static android.content.ContentValues.TAG;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,7 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.core.Tag;
+
 
 import org.techtown.Activity.databinding.ActivityRegisterBinding;
 
@@ -69,6 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Log.d(TAG,"onResponse: "+response.code());
                 if (response.isSuccessful()){
                     Toast.makeText(RegisterActivity.this, "🎉회원가입에 성공했습니다!🎉", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                     finish();
                 }else{
                     Toast.makeText(RegisterActivity.this, "오류가 났습니다...", Toast.LENGTH_SHORT).show();
