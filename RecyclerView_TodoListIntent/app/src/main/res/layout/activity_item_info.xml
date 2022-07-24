@@ -5,9 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_all"
     android:orientation="vertical"
-    android:padding="12dp"
-    tools:context="InfoActivity">
-
+    android:padding="12dp">
     <LinearLayout
         android:id="@+id/title_linearlayout"
         android:layout_width="match_parent"
