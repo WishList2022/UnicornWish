@@ -21,6 +21,7 @@ import WishPost.PostRequest;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.POST;
 
 public class InfoActivity extends AppCompatActivity {
 
@@ -103,6 +104,12 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void BtnPost(String tilte, String content, String color){
+
+
+        PostRequest postRequest = new PostRequest(tilte, content, color);
+        ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
+
+
     }
 
 }
