@@ -20,8 +20,13 @@ public interface ServerApi {
             @Body RegisterRequest registerRequest
     );
 
+<<<<<<< HEAD
     @POST("/post/{user-id}")
     Call<Void> WishPost(
             @Body PostRequest postRequest
     );
+=======
+
+
+>>>>>>> main
 }

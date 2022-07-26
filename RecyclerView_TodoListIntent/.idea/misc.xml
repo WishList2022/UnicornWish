@@ -40,6 +40,8 @@
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/item_list_red.xml" value="0.2" />
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/item_list_yel.xml" value="0.1" />
         <entry key="..\:/Users/DSM2022/Desktop/RecyclerView_TodoListIntent/app/src/main/res/mipmap-anydpi-v26/ic_main.xml" value="0.103" />
+        <entry key="..\:/Users/Junsu/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/activity_item_edit.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Junsu/Desktop/RecyclerView_TodoListIntent/app/src/main/res/layout/activity_item_info.xml" value="0.33" />
         <entry key="..\:/github/AndroidStudy/RecyclerView_TodoListIntent/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1425" />
         <entry key="..\:/github/AndroidStudy/RecyclerView_TodoListIntent/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1425" />
         <entry key="..\:/github/AndroidStudy/RecyclerView_TodoListIntent/app/src/main/res/drawable/selector.xml" value="0.158" />
@@ -55,6 +57,12 @@
         <entry key="..\:/github/UnicornWish/RecyclerView_TodoListIntent/app/src/main/res/layout/item_list.xml" value="0.23125" />
         <entry key="..\:/github/UnicornWish/RecyclerView_TodoListIntent/app/src/main/res/layout/splash.xml" value="0.1814814814814815" />
         <entry key="..\:/github/UnicornWish/RecyclerView_TodoListIntent/app/src/main/res/layout/tset.xml" value="0.23125" />
+        <entry key="app/src/main/res/layout/activity_item_edit.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/layout/activity_item_info.xml" value="0.20969202898550723" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/layout/item_list.xml" value="0.36041666666666666" />
       </map>
     </option>
   </component>

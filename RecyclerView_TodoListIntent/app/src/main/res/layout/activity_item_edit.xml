@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_all"
     android:orientation="vertical"
-    android:padding="12dp">
+    android:padding="12dp"
+    tools:context="EditActivity">
+
     <LinearLayout
         android:id="@+id/title_linearlayout"
         android:layout_width="match_parent"
@@ -60,7 +62,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/info_etv_title"
+                    android:id="@+id/edit_etv_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -69,13 +71,13 @@
                     android:layout_marginBottom="4dp"
                     android:background="@drawable/background_view_nor"
                     android:gravity="start"
-                    android:hint="etv_title"
+                    android:hint="tv_title"
                     android:padding="4dp"
                     android:textColorHint="@color/gray"
                     android:textSize="30sp" />
 
                 <EditText
-                    android:id="@+id/info_etv_content"
+                    android:id="@+id/edit_etv_content"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="5dp"
@@ -84,14 +86,14 @@
                     android:background="@drawable/background_view_nor_norad"
                     android:gravity="start"
 
-                    android:hint="etv_content"
+                    android:hint="tv_content"
                     android:padding="4dp"
                     android:textColorHint="@color/gray"
                     android:textSize="24sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/info_button_layout"
+                android:id="@+id/edit_button_layout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="5dp"
@@ -103,7 +105,7 @@
                 android:paddingEnd="5dp">
 
                 <Button
-                    android:id="@+id/btn_nor"
+                    android:id="@+id/edit_btn_nor"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -111,7 +113,7 @@
                     android:background="@drawable/background_view_button_nor" />
 
                 <Button
-                    android:id="@+id/btn_red"
+                    android:id="@+id/edit_btn_red"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -119,7 +121,7 @@
                     android:background="@color/background_red" />
 
                 <Button
-                    android:id="@+id/btn_blu"
+                    android:id="@+id/edit_btn_blu"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -127,7 +129,7 @@
                     android:background="@color/background_blu" />
 
                 <Button
-                    android:id="@+id/btn_gre"
+                    android:id="@+id/edit_btn_gre"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -135,7 +137,7 @@
                     android:background="@color/background_gre" />
 
                 <Button
-                    android:id="@+id/btn_yel"
+                    android:id="@+id/edit_btn_yel"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -146,7 +148,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/info_button_ok"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="5dp"
@@ -156,7 +157,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/info_btn_cancel"
+                    android:id="@+id/edit_btn_cancel"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -171,7 +172,7 @@
                     android:textSize="20sp" />
 
                 <Button
-                    android:id="@+id/info_btn_ok"
+                    android:id="@+id/edit_btn_ok"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -181,7 +182,7 @@
                     android:layout_marginBottom="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_view_nor"
-                    android:text="완료"
+                    android:text="수정"
                     android:textColor="#6667AB"
                     android:textSize="20sp" />
             </LinearLayout>

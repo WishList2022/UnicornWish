@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Unicorn</string>
+    <string name="aaction_settings">Settings</string>
+
 </resources>
