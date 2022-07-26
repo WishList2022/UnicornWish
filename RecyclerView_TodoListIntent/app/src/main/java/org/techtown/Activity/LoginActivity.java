@@ -71,11 +71,12 @@ public class LoginActivity extends AppCompatActivity {
         serverApi.login(loginRequest).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Log.d(TAG, "onResponse: " + response.code());
                 if (response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "🎉로그인에 성공했습니다!🎉", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
+
+                    Log.d(TAG, "onResponse: "+response.body().toString());
                 }
             }
 

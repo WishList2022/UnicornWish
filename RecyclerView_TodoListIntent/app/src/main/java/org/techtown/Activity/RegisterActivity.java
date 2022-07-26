@@ -37,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
         binding.btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("RegisterActivity", "onClick");
                 Singup();
             }
         });
@@ -47,6 +48,8 @@ public class RegisterActivity extends AppCompatActivity {
         String account_id = binding.etRegisterTypeID.getText().toString();
         String password = binding.etRegisterTypePW.getText().toString();
         String username = binding.etRegisterTypeName.getText().toString();
+
+        Log.d("RegisterActivity", "Signup");
         
         if (username.length() == 0 || account_id.length() == 0 || password.length() == 0){
             Toast.makeText(RegisterActivity.this, "모든 항목을 입력해 주세요.", Toast.LENGTH_SHORT).show();
@@ -63,6 +66,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         RegisterRequest registerRequest = new RegisterRequest(account_id, password, username);
         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
+
+        Log.d("RegisterActivity", "RegisterResponse");
 
         serverApi.Singnup(registerRequest).enqueue(new Callback<Void>() {
             @Override
