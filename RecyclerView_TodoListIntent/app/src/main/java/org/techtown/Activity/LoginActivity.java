@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ComponentActivity;
 
 import org.techtown.Activity.databinding.ActivityLoginBinding;
 
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "ContentValues";
     private ActivityLoginBinding binding;
+    private static String accessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,32 +64,31 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void LoginResponse(String account_id, String password) {
-        //String account_id = binding.etLoginTypeID.getText().toString();
-        //String password = binding.etLoginTypePW.getText().toString();
 
         Log.d(TAG, "LoginResponse: 실행됨");
         LoginRequest loginRequest = new LoginRequest(account_id, password);
         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
-        serverApi.login(loginRequest).enqueue(new Callback<Void>() {
+        serverApi.login(loginRequest).enqueue(new Callback<LoginResponse>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(LoginActivity.this, "🎉로그인에 성공했습니다!🎉", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+             if (response.isSuccessful()){
 
-                    Log.d(TAG, "onResponse: "+response.body().toString());
-                }
+                 accessToken = response.body().getAccessToken();
+                 Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                 Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                 startActivity(intent);
+                 Log.d(TAG,"onResponse: "+ response.body().toString());
+             }
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "로그인에 실패했습니다..", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "통신 실패..", Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "onFailure: " + t);
+
             }
         });
-
-
     }
 }
+
 

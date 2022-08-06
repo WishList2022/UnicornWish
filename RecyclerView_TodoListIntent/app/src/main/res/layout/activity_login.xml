@@ -98,11 +98,7 @@
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/background_view_nor"
                         android:padding="4dp"
-<<<<<<< HEAD
                         android:hint="   id를 입력하세요"
-=======
-                        android:hint="  id를 입력하세요"
->>>>>>> main
                         android:textColor="@color/gray"
                         android:textSize="20sp" />
 
@@ -117,11 +113,7 @@
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/background_view_nor"
                         android:padding="4dp"
-<<<<<<< HEAD
                         android:hint="   비밀번호를 입력하세요"
-=======
-                        android:hint="  비밀번호를 입력하세요"
->>>>>>> main
                         android:inputType="textPassword"
                         android:textColor="@color/gray"
                         android:textSize="20sp" />

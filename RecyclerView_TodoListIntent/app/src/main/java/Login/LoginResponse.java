@@ -2,20 +2,13 @@ package Login;
 
 public class LoginResponse {
 
-    private String account_id;
-    private String password;
+    private String accessToken;
 
-    public LoginResponse(String account_id, String password) {
-        this.account_id = account_id;
-        this.password = password;
+    public LoginResponse(String accessToken) {
+        this.accessToken = accessToken;
     }
 
-    public String getAccount_id() {
-        return account_id;
+    public String getAccessToken() {
+        return accessToken;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
 }
