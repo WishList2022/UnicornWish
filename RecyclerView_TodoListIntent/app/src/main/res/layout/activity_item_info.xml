@@ -118,7 +118,7 @@
                     android:layout_weight="1"
                     android:background="@color/background_red" />
 
-                <Button
+                 <Button
                     android:id="@+id/btn_blu"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
