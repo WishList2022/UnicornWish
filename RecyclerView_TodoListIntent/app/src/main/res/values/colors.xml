@@ -15,6 +15,7 @@
     <color name="background_gre">#BBFFAA</color>
     <color name="background_blu">#99DAFF</color>
     <color name="background_nor">#ECECEC</color>
+    <color name="background_nor_pressed">#D5D5D5</color>
     <color name="backGroundLinearLayout">#ECECEC</color>
 
 </resources>
