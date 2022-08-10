@@ -12,7 +12,6 @@ import org.techtown.Activity.databinding.ActivitySplashBinding;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final String Tag = "SplashActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +25,6 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Log.e(Tag, "Application Running...");
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();
             }

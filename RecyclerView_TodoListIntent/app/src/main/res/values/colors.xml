@@ -8,7 +8,7 @@
     <color name="black">#000000</color>
     <color name="gray">#555555</color>
     <color name="white">#FFFFFF</color>
-
+    <color name="red">#FF5858</color>
 
     <color name="background_red">#FFA9A9</color>
     <color name="background_yel">#FFEE99</color>

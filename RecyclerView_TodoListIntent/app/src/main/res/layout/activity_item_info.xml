@@ -110,6 +110,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/background_view_button_nor" />
 
+
                 <Button
                     android:id="@+id/btn_red"
                     style="?android:attr/borderlessButtonStyle"

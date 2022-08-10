@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+
     public void LoginResponse(String account_id, String password) {
 
         Log.d(TAG, "LoginResponse: 실행됨");
@@ -75,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
 
                  accessToken = response.body().getAccessToken();
                  Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-                 Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                  startActivity(intent);
                  Log.d(TAG,"onResponse: "+ response.body().toString());
              }
