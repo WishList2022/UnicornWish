@@ -6,18 +6,6 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <!--<include
-        layout="@layout/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/nav_view"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/drawerlayout"
-        app:headerLayout="@layout/header"/>-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -64,6 +52,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
@@ -74,12 +63,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_linearlayout">
+            app:layout_constraintTop_toBottomOf="@+id/title_linearlayout"
+            android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="484dp"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
                 android:scrollbars="vertical"
@@ -89,67 +79,17 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="자신이 원하는 문구를 적어보세요!"
+                android:textAlignment="center">
+
+
+            </EditText>
+
         </LinearLayout>
 
-        <!--androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_linearLayout"
-            tools:ignore="MissingConstraints">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/type_todo_add"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/type_todo_background"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:paddingLeft="10dp">
-
-                <EditText
-                    android:id="@+id/etv_type_todo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginEnd="2dp"
-
-                    android:background="@android:color/transparent"
-                    android:hint="소원을 추가해 보세요!"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btn_add"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintHorizontal_weight="4"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_add"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@drawable/add_todo_background"
-                    android:elevation="0dp"
-                    android:text="ADD"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toEndOf="@+id/etv_type_todo"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

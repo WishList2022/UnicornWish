@@ -33,20 +33,12 @@ public class MainActivity extends AppCompatActivity {
         arrayList = new ArrayList<>();
         mainAdapter = new MainAdapter(arrayList, this);
         recyclerView.setAdapter(mainAdapter);
-        //EditText et = findViewById(R.id.etv_type_todo);
+
         Button btn_add = (Button) findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*MainData mainData = new MainData(et.getText().toString());
-                if (et.getText().toString().replace(" ", "").equals("")) {
-                    Toast mytoast = Toast.makeText(getApplicationContext(), "내용을 입력해주세요.", Toast.LENGTH_SHORT);
-                    mytoast.show();
-                } else {
-                    arrayList.add(mainData);
-                    mainAdapter.notifyDataSetChanged();
-                    et.setText("");
-                }*/
+
                 moveSee();
             }
         });

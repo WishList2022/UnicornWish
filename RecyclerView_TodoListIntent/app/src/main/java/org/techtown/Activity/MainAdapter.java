@@ -59,11 +59,8 @@ class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
                 return true;
             }
         });
-
     }
 
-    private void startActivities(Intent intent) {
-    }
 
     @Override
     public int getItemCount() {
@@ -81,7 +78,6 @@ class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
-        protected ImageView iv_profile;
         protected TextView tv_name;
 
 

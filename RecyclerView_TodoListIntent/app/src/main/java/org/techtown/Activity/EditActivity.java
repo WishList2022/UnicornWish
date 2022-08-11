@@ -1,6 +1,6 @@
 package org.techtown.Activity;
 
-import android.app.Activity;
+
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -15,6 +15,13 @@ public class EditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
         //binding
+=======
+        binding = ActivityItemEditBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+
+>>>>>>> main
     }
 }

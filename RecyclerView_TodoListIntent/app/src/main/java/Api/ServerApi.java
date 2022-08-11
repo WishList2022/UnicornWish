@@ -1,15 +1,11 @@
 package Api;
 
-import android.provider.MediaStore;
-
 import org.techtown.Activity.LoginActivity;
-
 import Login.LoginRequest;
 import Login.LoginResponse;
 import WishEdit.EditRequest;
 import WishGet.GetResponse;
 import WishPost.PostRequest;
-
 import Register.RegisterRequest;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -44,7 +40,7 @@ public interface ServerApi {
     );
 
     @DELETE("/feed/{feed-id}")// Wish 삭제
-    Call<Void> WishDelete(
+    Call<Void> WishDel(
             @Header("Authorization") String accessToken,
             @Path("feedId") long feedId
     );
@@ -57,4 +53,5 @@ public interface ServerApi {
     );
 
 }
+
 
