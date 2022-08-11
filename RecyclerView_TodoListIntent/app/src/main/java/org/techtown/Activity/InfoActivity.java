@@ -20,7 +20,7 @@ public class InfoActivity extends AppCompatActivity {
 
     private static final String TAG = "";
     private ActivityItemInfoBinding binding;
-    private String color = "하얀색";
+
 
 
 
@@ -38,38 +38,6 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
-        binding.btnNor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                color = "하얀색";
-            }
-        });
-
-        binding.btnRed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { color = "빨간색"; }
-        });
-
-        binding.btnBlu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                color = "파란색";
-            }
-        });
-
-        binding.btnGre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                color = "초록색";
-            }
-        });
-
-        binding.btnYel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                color = "노란색";
-            }
-        });
 
     }
 
@@ -91,7 +59,7 @@ public class InfoActivity extends AppCompatActivity {
 
     private  void BtnPost(String title, String content){
 
-        PostRequest postRequest = new PostRequest(title, content, color);
+        PostRequest postRequest = new PostRequest(title, content);
         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
         Class<LoginActivity> accessToken = LoginActivity.class;
         serverApi.WishPost(accessToken, postRequest).enqueue(new Callback<Void>() {
@@ -100,7 +68,7 @@ public class InfoActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     binding.infoEtvTitle.setText("");
                     binding.infoEtvContent.setText("");
-                    binding.btnNor.setText("");
+
 
                     Toast.makeText(InfoActivity.this, "Wish가 등록 되었습니다.", Toast.LENGTH_SHORT).show();
                 }
