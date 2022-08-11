@@ -79,9 +79,9 @@
                 <EditText
                     android:id="@+id/edit_etv_content"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="432dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="5dp"
                     android:background="@drawable/background_view_nor_norad"
                     android:gravity="start"
@@ -89,61 +89,6 @@
                     android:padding="4dp"
                     android:textColorHint="@color/gray"
                     android:textSize="24sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/edit_button_layout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="4dp"
-                android:layout_weight="3"
-                android:orientation="horizontal"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp">
-
-                <Button
-                    android:id="@+id/edit_btn_nor"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/background_view_button_nor" />
-
-                <Button
-                    android:id="@+id/edit_btn_red"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/background_red" />
-
-                <Button
-                    android:id="@+id/edit_btn_blu"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/background_blu" />
-
-                <Button
-                    android:id="@+id/edit_btn_gre"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/background_gre" />
-
-                <Button
-                    android:id="@+id/edit_btn_yel"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/background_view_button_yel" />
-
-
             </LinearLayout>
 
             <LinearLayout
