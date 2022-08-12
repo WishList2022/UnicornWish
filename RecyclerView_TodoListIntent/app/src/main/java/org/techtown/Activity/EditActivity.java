@@ -15,13 +15,20 @@ public class EditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< Updated upstream
 <<<<<<< HEAD
         //binding
 =======
+=======
+>>>>>>> Stashed changes
         binding = ActivityItemEditBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
 
+<<<<<<< Updated upstream
 >>>>>>> main
+=======
+
+>>>>>>> Stashed changes
     }
 }
