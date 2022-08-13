@@ -58,32 +58,16 @@
         <entry key="..\:/github/UnicornWish/RecyclerView_TodoListIntent/app/src/main/res/layout/item_list.xml" value="0.23125" />
         <entry key="..\:/github/UnicornWish/RecyclerView_TodoListIntent/app/src/main/res/layout/splash.xml" value="0.1814814814814815" />
         <entry key="..\:/github/UnicornWish/RecyclerView_TodoListIntent/app/src/main/res/layout/tset.xml" value="0.23125" />
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-        <entry key="app/src/main/res/drawable/background_button_add_wish.xml" value="0.1645" />
-        <entry key="app/src/main/res/drawable/background_view_button_nor_pressed.xml" value="0.1645" />
-        <entry key="app/src/main/res/drawable/background_view_nor.xml" value="0.1645" />
         <entry key="app/src/main/res/layout/activity_item_edit.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/activity_item_info.xml" value="0.20969202898550723" />
-=======
-        <entry key="app/src/main/res/layout/activity_item_edit.xml" value="0.2912109375" />
-        <entry key="app/src/main/res/layout/activity_item_info.xml" value="0.34338190935660096" />
->>>>>>> main
-=======
-        <entry key="app/src/main/res/layout/activity_item_edit.xml" value="0.3247634887695313" />
-        <entry key="app/src/main/res/layout/activity_item_info.xml" value="0.3181041993956635" />
->>>>>>> Stashed changes
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.36041666666666666" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.34019607843137256" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.36041666666666666" />
-        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/item_list.xml" value="0.36041666666666666" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_main.xml" value="0.2535" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_main_round.xml" value="0.2535" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

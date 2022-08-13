@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+    
     void moveSee() {
         Intent intent = new Intent(MainActivity.this, InfoActivity.class);
         startActivity(intent);

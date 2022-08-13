@@ -13,9 +13,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
-class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
 
     private MainActivity mainActivity;
     private ArrayList<MainData> arrayList;
@@ -24,6 +26,19 @@ class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
         this.arrayList = arrayList;
         this.mainActivity = mainActivity;
 
+    }
+
+    public class  MainViewHoder extends RecyclerView.ViewHolder{
+
+        private TextView tv_title;
+        private TextView tv_contnet;
+
+        public MainViewHoder(@NonNull View view) {
+            super(view);
+
+            tv_title = view.findViewById(R.id.tv_title);
+            tv_contnet = view.findViewById(R.id.tv_ccontent);
+        }
     }
 
 
@@ -40,8 +55,7 @@ class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final MainAdapter.CustomViewHolder holder, int position) {
 
-        holder.tv_name.setText(arrayList.get(position).getTv_name());
-        holder.itemView.setTag(position);
+      holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,22 +4,19 @@ package org.techtown.Activity;
 public class MainData {
 
 
-    private String tv_name;
+    private String tv_title;
+    private String tv_content;
 
-
-    public MainData(String tv_name) {
-
-        this.tv_name = tv_name;
+    public MainData(String tv_title, String tv_content){
+        this.tv_title = tv_title;
+        this.tv_content = tv_content;
     }
 
-
-    public String getTv_name() {
-
-        return tv_name;
+    public String getTv_title() {
+        return tv_title;
     }
 
-    public void setTv_name(String tv_name) {
-
-        this.tv_name = tv_name;
+    public String getTv_content() {
+        return tv_content;
     }
 }
