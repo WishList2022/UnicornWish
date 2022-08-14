@@ -72,11 +72,12 @@ public class RegisterActivity extends AppCompatActivity {
         serverApi.Singnup(registerRequest).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Log.d(TAG,"onResponse: "+response.code());
+
                 if (response.isSuccessful()){
                     Toast.makeText(RegisterActivity.this, "🎉회원가입에 성공했습니다!🎉", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                    finish();
+                    Log.d(TAG,"onResponse: "+response.code());;
+
                 }else{
                     Toast.makeText(RegisterActivity.this, "오류가 났습니다...", Toast.LENGTH_SHORT).show();
                 }
@@ -86,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(RegisterActivity.this, "통신 실패 하...", Toast.LENGTH_SHORT).show();
-                Log.d(TAG,"onFailure: "+t);
+
             }
         });
     }

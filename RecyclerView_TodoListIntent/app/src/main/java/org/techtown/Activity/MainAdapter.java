@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
 
+
     private MainActivity mainActivity;
     private ArrayList<MainData> arrayList;
 
