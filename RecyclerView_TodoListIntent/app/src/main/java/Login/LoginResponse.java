@@ -2,13 +2,13 @@ package Login;
 
 public class LoginResponse {
 
-    private String accessToken;
+    private String access_token;
 
     public LoginResponse(String accessToken) {
-        this.accessToken = accessToken;
+        this.access_token = accessToken;
     }
 
     public String getAccessToken() {
-        return accessToken;
+        return access_token;
     }
 }

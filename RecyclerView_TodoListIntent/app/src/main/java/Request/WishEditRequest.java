@@ -1,14 +1,12 @@
-package WishEdit;
+package Request;
 
-public class EditRequest {
+public class WishEditRequest {
     private String title;
     private String content;
-    private String color;
 
-    public EditRequest(String title, String content, String color) {
+    public WishEditRequest(String title, String content, String color) {
         this.title = title;
         this.content = content;
-        this.color = color;
     }
 
     public String getTitle() {
@@ -19,7 +17,4 @@ public class EditRequest {
         return content;
     }
 
-    public String getColor() {
-        return color;
-    }
 }

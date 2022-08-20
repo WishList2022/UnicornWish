@@ -1,14 +1,15 @@
-package WishGet;
+package Request;
 
-public class GetResponse {
+public class WishPostRequest {
     private String title;
     private String content;
-    private String color;
 
-    public GetResponse(String title, String content, String color){
+
+
+    public WishPostRequest(String title, String content) {
         this.title = title;
         this.content = content;
-        this.color = color;
+
     }
 
     public String getTitle() {
@@ -19,8 +20,4 @@ public class GetResponse {
         return content;
     }
 
-    public String getColor() {
-        return color;
-    }
 }
-

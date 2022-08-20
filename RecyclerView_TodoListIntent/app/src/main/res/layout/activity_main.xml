@@ -82,7 +82,7 @@
             <EditText
                 android:id="@+id/typeMemo"
                 android:layout_width="match_parent"
-                android:layout_height="124dp"
+                android:layout_height="50dp"
                 android:backgroundTint="@color/background_nor"
                 android:hint="자신이 원하는 문구를 적어보세요!"
                 android:textAlignment="center">

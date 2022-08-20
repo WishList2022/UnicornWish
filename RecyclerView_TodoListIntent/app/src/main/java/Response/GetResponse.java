@@ -1,18 +1,12 @@
-package WishPost;
+package Response;
 
-public class PostRequest {
+public class GetResponse {
     private String title;
     private String content;
 
-
-
-    public PostRequest(String title, String content, String color) {
+    public GetResponse(String title, String content, String color){
         this.title = title;
         this.content = content;
-
-    }
-
-    public PostRequest(String title, String content) {
     }
 
     public String getTitle() {
@@ -24,3 +18,4 @@ public class PostRequest {
     }
 
 }
+

@@ -3,14 +3,13 @@ package org.techtown.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import org.techtown.Activity.databinding.ActivityItemInfoBinding;
 import Api.ApiProvider;
 import Api.ServerApi;
-import WishPost.PostRequest;
+import Request.WishPostRequest;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,10 +17,8 @@ import retrofit2.Response;
 
 public class InfoActivity extends AppCompatActivity {
 
-    private static final String TAG = "";
+    private static final String TAG = "ContentValues";
     private ActivityItemInfoBinding binding;
-
-
 
 
     @Override
@@ -34,14 +31,21 @@ public class InfoActivity extends AppCompatActivity {
         binding.infoBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                POST();
+                POSTcheck();
             }
         });
 
+        binding.infoBtnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
-    private void POST(){
+    private void POSTcheck(){
         String title = binding.infoEtvTitle.getText().toString();
         String content = binding.infoEtvContent.getText().toString();
 
@@ -52,25 +56,28 @@ public class InfoActivity extends AppCompatActivity {
             Toast.makeText(InfoActivity.this, "Wish 내용을 입력주세요", Toast.LENGTH_SHORT).show();
         }
         else{
-            BtnPost(title,content);
+            Post();
         }
 
     }
 
-    private  void BtnPost(String title, String content){
 
-        PostRequest postRequest = new PostRequest(title, content);
+    private  void Post(){
+        String title =  binding.infoEtvTitle.getText().toString();
+        String content = binding.infoEtvContent.getText().toString();
+        WishPostRequest postRequest = new WishPostRequest(title,content);
         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
-        Class<LoginActivity> accessToken = LoginActivity.class;
-        serverApi.WishPost(accessToken, postRequest).enqueue(new Callback<Void>() {
+        serverApi.WishPost(LoginActivity.access_token, postRequest).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){
+
+                    Toast.makeText(InfoActivity.this, "Wish가 등록 되었습니다.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     binding.infoEtvTitle.setText("");
                     binding.infoEtvContent.setText("");
 
-
-                    Toast.makeText(InfoActivity.this, "Wish가 등록 되었습니다.", Toast.LENGTH_SHORT).show();
+                    binding.infoEtvTitle.requestFocus();
                 }
             }
 
@@ -80,14 +87,5 @@ public class InfoActivity extends AppCompatActivity {
                 Toast.makeText(InfoActivity.this, "Wish 등록에 실패했습니다.", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-    binding.infoBtnCancel.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(intent);
-        }
-    });
     }
 }

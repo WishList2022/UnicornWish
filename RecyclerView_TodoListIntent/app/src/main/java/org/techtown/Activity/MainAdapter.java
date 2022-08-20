@@ -54,7 +54,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
 
 
     @Override
-    public void onBindViewHolder(@NonNull final MainAdapter.CustomViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MainAdapter.CustomViewHolder holder, int position) {
+
+
+
+
+
 
       holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -77,10 +82,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
     }
 
 
-    @Override
-    public int getItemCount() {
-        return (null != arrayList ? arrayList.size() : 0);
-    }
 
     public void remove(int position) {
         try {
@@ -105,4 +106,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         }
 
     }
+
+    @Override
+    public int getItemCount() {
+        return arrayList.size();
+    }
+
 }

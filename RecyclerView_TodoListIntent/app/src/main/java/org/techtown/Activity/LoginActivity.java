@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ComponentActivity;
-
 import org.techtown.Activity.databinding.ActivityLoginBinding;
 
 import Api.ApiProvider;
@@ -23,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "ContentValues";
     private ActivityLoginBinding binding;
-    private static String accessToken;
+    public static String access_token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,11 +72,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
              if (response.isSuccessful()){
 
-                 accessToken = response.body().getAccessToken();
-                 Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                 access_token = response.body().getAccessToken();
+                 Toast.makeText(LoginActivity.this, "🎉로그인에 성공했습니다!🎉", Toast.LENGTH_SHORT).show();
                  Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                  startActivity(intent);
-                 Log.d(TAG,"onResponse: "+ response.body().toString());
+                 Log.d(TAG,"onResponse: "+ response.code());
+                 finish();
              }
             }
 

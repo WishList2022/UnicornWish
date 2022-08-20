@@ -18,5 +18,6 @@ public class EditActivity extends AppCompatActivity {
         binding = ActivityItemEditBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
     }
 }

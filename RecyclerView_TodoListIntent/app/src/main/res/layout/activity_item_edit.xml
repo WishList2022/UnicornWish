@@ -74,7 +74,7 @@
                     android:hint="  제목을 입력해주세요"
                     android:padding="4dp"
                     android:textColorHint="@color/gray"
-                    android:textSize="30sp" />
+                    android:textSize="28sp" />
 
                 <EditText
                     android:id="@+id/edit_etv_content"
@@ -88,7 +88,7 @@
                     android:hint="  내용을 입력해주세요"
                     android:padding="4dp"
                     android:textColorHint="@color/gray"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -101,7 +101,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/edit_btn_cancel"
+                    android:id="@+id/Delete_btn"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -111,8 +111,8 @@
                     android:layout_marginBottom="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_view_nor"
-                    android:text="취소"
-                    android:textColor="@color/gray"
+                    android:text="삭제"
+                    android:textColor="@color/red"
                     android:textSize="20sp" />
 
                 <Button

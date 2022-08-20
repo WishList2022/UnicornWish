@@ -2,14 +2,12 @@ package org.techtown.Activity;
 
 import static android.content.ContentValues.TAG;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -19,7 +17,6 @@ import org.techtown.Activity.databinding.ActivityRegisterBinding;
 import Api.ApiProvider;
 import Api.ServerApi;
 import Register.RegisterRequest;
-import Register.RegisterResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
