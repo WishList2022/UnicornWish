@@ -2,6 +2,7 @@ package Api;
 
 import Login.LoginRequest;
 import Login.LoginResponse;
+import Request.EditRequest;
 import Request.TextEditRequest;
 import Request.WishEditRequest;
 import Request.TextPostRequest;
@@ -51,7 +52,7 @@ public interface ServerApi {
     Call<Void> WishEdit(
             @Header("Authorization") String accessToken,
             @Path("feedId") long feedId,
-            @Body WishEditRequest wishEditRequest
+            @Body EditRequest editRequest
     );
 
     @POST("/text")// Text 작성

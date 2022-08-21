@@ -1,11 +1,10 @@
-package Response;
-import java.util.ArrayList;
+package Request;
 
-public class GetResponse {
+public class EditRequest {
     private String title;
     private String content;
 
-    public GetResponse(String title, String content, String color){
+    public EditRequest(String title, String content, String color) {
         this.title = title;
         this.content = content;
     }
@@ -19,4 +18,3 @@ public class GetResponse {
     }
 
 }
-

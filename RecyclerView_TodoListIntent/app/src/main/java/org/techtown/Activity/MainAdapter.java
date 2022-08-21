@@ -17,13 +17,15 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import Response.GetResponse;
+
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
 
 
     private MainActivity mainActivity;
-    private ArrayList<MainData> arrayList;
+    private ArrayList<GetResponse> arrayList;
 
-    public MainAdapter(ArrayList<MainData> arrayList, MainActivity mainActivity) {
+    public MainAdapter(ArrayList<GetResponse> arrayList, MainActivity mainActivity) {                   // 리스트 생성자
         this.arrayList = arrayList;
         this.mainActivity = mainActivity;
 
@@ -55,10 +57,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MainAdapter.CustomViewHolder holder, int position) {
-
-
-
-
+        holder.title.setText(arrayList.get(position).getTitle());
+        holder.content.setText(arrayList.get(position).getContent());
 
 
       holder.itemView.setTag(position);
@@ -66,41 +66,25 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: ");
-                mainActivity.moveSee();
+                mainActivity.Edit();
 
             }
         });
 
 
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                remove(holder.getAdapterPosition());
-                return true;
-            }
-        });
-    }
-
-
-
-    public void remove(int position) {
-        try {
-            arrayList.remove(position);
-            notifyItemRemoved(position);
-        } catch (IndexOutOfBoundsException ex) {
-            ex.printStackTrace();
-        }
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
-        protected TextView tv_name;
+        public TextView title;
+        public TextView content;
 
 
         public CustomViewHolder(View itemView) {
             super(itemView);
 
-            this.tv_name = (TextView) itemView.findViewById(R.id.tv_title);
+            this.title = (TextView) itemView.findViewById(R.id.edit_etv_title);
+            this.content = (TextView) itemView.findViewById(R.id.edit_etv_content);
 
 
         }
@@ -108,7 +92,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount() {                 // 리스트 사이즈 반환
         return arrayList.size();
     }
 
