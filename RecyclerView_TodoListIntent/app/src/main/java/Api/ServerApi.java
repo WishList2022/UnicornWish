@@ -31,38 +31,38 @@ public interface ServerApi {
 
     @POST("/feed")// Wish 작성
     Call<Void> WishPost(
-            @Header("Authorization") String access_token,
+            @Header("Authorization") String accessToken ,
             @Body WishPostRequest wishPostRequest
     );
 
 
     @GET("/feed")// Wish 조회
     Call<GetResponse> wishInquiry(
-            @Header("Authorization") String access_token
+            @Header("Authorization") String accessToken
     );
 
     @DELETE("/feed/{feed-id}")// Wish 삭제
     Call<Void> WishDel(
-            @Header("Authorization") String access_token,
+            @Header("Authorization") String accessToken,
             @Path("feedId") long feedId
     );
 
     @PUT("/feed/{feed-id}")//Wish 수정
     Call<Void> WishEdit(
-            @Header("Authorization") String access_token,
+            @Header("Authorization") String accessToken,
             @Path("feedId") long feedId,
             @Body WishEditRequest wishEditRequest
     );
 
     @POST("/text")// Text 작성
     Call<Void> textPost(
-            @Header("Authorization") String access_token,
+            @Header("Authorization") String accessToken,
             @Body TextPostRequest textPostRequest
     );
 
     @PUT("/text/{text-id}")// Text 수정
     Call<Void> TestEdit(
-            @Header("Authorization") String access_token,
+            @Header("Authorization") String accessToken,
             @Path("textId") long textId,
             @Body TextEditRequest textEditRequest
     );

@@ -35,14 +35,6 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
-        binding.infoBtnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     private void POSTcheck(){
@@ -67,7 +59,7 @@ public class InfoActivity extends AppCompatActivity {
         String content = binding.infoEtvContent.getText().toString();
         WishPostRequest postRequest = new WishPostRequest(title,content);
         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
-        serverApi.WishPost(LoginActivity.access_token, postRequest).enqueue(new Callback<Void>() {
+        serverApi.WishPost("Bearer" + LoginActivity.accessToken, postRequest).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){
@@ -79,12 +71,21 @@ public class InfoActivity extends AppCompatActivity {
 
                     binding.infoEtvTitle.requestFocus();
                 }
+                Toast.makeText(getApplicationContext(),"" + response.code(),Toast.LENGTH_SHORT).show();
             }
 
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(InfoActivity.this, "Wish 등록에 실패했습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.infoBtnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
             }
         });
     }

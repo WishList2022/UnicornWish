@@ -12,6 +12,7 @@ public class WishPostRequest {
 
     }
 
+
     public String getTitle() {
         return title;
     }

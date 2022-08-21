@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "ContentValues";
     private ActivityLoginBinding binding;
-    public static String access_token;
+    public static String accessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
              if (response.isSuccessful()){
 
-                 access_token = response.body().getAccessToken();
+                 accessToken = response.body().getAccessToken();
                  Toast.makeText(LoginActivity.this, "🎉로그인에 성공했습니다!🎉", Toast.LENGTH_SHORT).show();
                  Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                  startActivity(intent);
