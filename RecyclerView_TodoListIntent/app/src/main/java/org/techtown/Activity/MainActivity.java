@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Api.ApiProvider;
 import Api.ServerApi;
@@ -29,33 +30,36 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     private String string;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = (RecyclerView) findViewById(R.id.rv);
-        linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
+
         arrayList = new ArrayList<>();
-        mainAdapter = new MainAdapter(arrayList, this);
+
+        recyclerView = (RecyclerView) findViewById(R.id.rv);
+
+        linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        mainAdapter = new MainAdapter(MainActivity.this, arrayList);
+
         recyclerView.setAdapter(mainAdapter);
 
-
         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
-        serverApi.wishInquiry("Bearer " + LoginActivity.accessToken).enqueue(new Callback<GetResponse>() {
+        serverApi.wishInquiry("Bearer" + LoginActivity.accessToken).enqueue(new Callback<ArrayList<GetResponse>>() {
             @Override
-            public void onResponse(Call<GetResponse> call, Response<GetResponse> response) {
-                arrayList.add(response.body());
-                mainAdapter.notifyDataSetChanged();
-
-
+            public void onResponse(Call<ArrayList<GetResponse>> call, Response<ArrayList<GetResponse>> response) {
+                if(response.isSuccessful()){
+                    arrayList.addAll(response.body());
+                    mainAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
-            public void onFailure(Call<GetResponse> call, Throwable t) {
+            public void onFailure(Call<ArrayList<GetResponse>> call, Throwable t) {
 
-                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -70,8 +74,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void Edit(){
-        Intent intent = new Intent(MainActivity.this, EditActivity.class);
-        startActivity(intent);
+
     }
 
     void moveSee() {

@@ -1,11 +1,10 @@
 package Response;
-import java.util.ArrayList;
 
 public class GetResponse {
     private String title;
     private String content;
 
-    public GetResponse(String title, String content, String color){
+    public GetResponse(String title, String content){
         this.title = title;
         this.content = content;
     }
@@ -19,4 +18,3 @@ public class GetResponse {
     }
 
 }
-

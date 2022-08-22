@@ -2,36 +2,33 @@ package org.techtown.Activity;
 
 import static android.content.ContentValues.TAG;
 
-import android.content.Intent;
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import Response.GetResponse;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
 
-
     private MainActivity mainActivity;
     private ArrayList<GetResponse> arrayList;
 
-    public MainAdapter(ArrayList<GetResponse> arrayList, MainActivity mainActivity) {                   // 리스트 생성자
-        this.arrayList = arrayList;
+    public MainAdapter(MainActivity mainActivity, ArrayList<GetResponse> arrayList) {
         this.mainActivity = mainActivity;
-
+        this.arrayList = arrayList;
     }
 
-    public class  MainViewHoder extends RecyclerView.ViewHolder{
+    public class MainViewHoder extends RecyclerView.ViewHolder {
 
         private TextView tv_title;
         private TextView tv_contnet;
@@ -44,7 +41,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         }
     }
 
-
     @NonNull
     @Override
     public MainAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -54,14 +50,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         return holder;
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull MainAdapter.CustomViewHolder holder, int position) {
         holder.title.setText(arrayList.get(position).getTitle());
         holder.content.setText(arrayList.get(position).getContent());
 
-
-      holder.itemView.setTag(position);
+        holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,8 +77,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         public CustomViewHolder(View itemView) {
             super(itemView);
 
-            this.title = (TextView) itemView.findViewById(R.id.edit_etv_title);
-            this.content = (TextView) itemView.findViewById(R.id.edit_etv_content);
+            this.title = (TextView) itemView.findViewById(R.id.tv_title);
+            this.content = (TextView) itemView.findViewById(R.id.tv_ccontent);
 
 
         }

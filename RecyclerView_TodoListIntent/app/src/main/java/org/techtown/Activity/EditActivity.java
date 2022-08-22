@@ -47,7 +47,7 @@ public class EditActivity extends AppCompatActivity {
 
     public void EditPost(String title, String contnet){
 
-        EditRequest editRequest
+
 
     }
 

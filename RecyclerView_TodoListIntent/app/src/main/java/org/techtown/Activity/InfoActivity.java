@@ -59,7 +59,7 @@ public class InfoActivity extends AppCompatActivity {
         String content = binding.infoEtvContent.getText().toString();
         WishPostRequest postRequest = new WishPostRequest(title,content);
         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
-        serverApi.WishPost("Bearer" + LoginActivity.accessToken, postRequest).enqueue(new Callback<Void>() {
+        serverApi.WishPost("Bearer " + LoginActivity.accessToken, postRequest).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){
@@ -70,8 +70,9 @@ public class InfoActivity extends AppCompatActivity {
                     binding.infoEtvContent.setText("");
 
                     binding.infoEtvTitle.requestFocus();
+                    Intent intent1 = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intent1);
                 }
-                Toast.makeText(getApplicationContext(),"" + response.code(),Toast.LENGTH_SHORT).show();
             }
 
 

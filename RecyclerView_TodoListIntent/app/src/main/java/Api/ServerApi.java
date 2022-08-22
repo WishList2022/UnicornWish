@@ -1,5 +1,7 @@
 package Api;
 
+import java.util.ArrayList;
+
 import Login.LoginRequest;
 import Login.LoginResponse;
 import Request.EditRequest;
@@ -38,7 +40,7 @@ public interface ServerApi {
 
 
     @GET("/feed")// Wish 조회
-    Call<GetResponse> wishInquiry(
+    Call<ArrayList<GetResponse>> wishInquiry(
             @Header("Authorization") String accessToken
     );
 
