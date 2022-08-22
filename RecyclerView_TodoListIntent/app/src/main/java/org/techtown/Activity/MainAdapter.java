@@ -1,19 +1,16 @@
 package org.techtown.Activity;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
 
@@ -41,8 +38,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),EditActivity.class);
-                intent.putExtra("title",arrayList.get(position).getTiltle());
+                Intent intent = new Intent(v.getContext(), EditActivity.class);
+                intent.putExtra("title", arrayList.get(position).getTiltle());
                 intent.putExtra("content", arrayList.get(position).getContent());
 
                 v.getContext().startActivity(intent);
@@ -51,6 +48,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
 
             }
         });
+    }
+
+    @Override
+    public int getItemCount() {                 // 리스트 사이즈 반환
+        return arrayList.size();
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
@@ -63,15 +65,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
             super(itemView);
 
             this.title = (TextView) itemView.findViewById(R.id.tv_title);
-            this.content = (TextView) itemView.findViewById(R.id.tv_ccontent);
+            this.content = (TextView) itemView.findViewById(R.id.tv_content);
 
 
         }
 
-    }
-
-    @Override
-    public int getItemCount() {                 // 리스트 사이즈 반환
-        return arrayList.size();
     }
 }

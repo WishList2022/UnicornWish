@@ -30,7 +30,7 @@
                 android:textColor="@color/black"
                 android:textSize="24sp" />
             <TextView
-                android:id="@+id/tv_ccontent"
+                android:id="@+id/tv_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
