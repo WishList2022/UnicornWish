@@ -1,6 +1,6 @@
 package Api;
 
-import java.util.ArrayList;
+import org.techtown.Activity.FetchFeedResponse;
 
 import Login.LoginRequest;
 import Login.LoginResponse;
@@ -40,7 +40,7 @@ public interface ServerApi {
 
 
     @GET("/feed")// Wish 조회
-    Call<ArrayList<GetResponse>> wishInquiry(
+    Call <FetchFeedResponse> wishInquiry(
             @Header("Authorization") String accessToken
     );
 

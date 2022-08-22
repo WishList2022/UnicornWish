@@ -6,16 +6,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 import Api.ApiProvider;
 import Api.ServerApi;
-import Response.GetResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,12 +22,10 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private ArrayList<GetResponse> arrayList;
+    private ArrayList<MainData> arrayList;
     private MainAdapter mainAdapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private String string;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,47 +37,56 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.rv);
 
         linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        mainAdapter = new  MainAdapter(arrayList);
 
         recyclerView.setLayoutManager(linearLayoutManager);
-
-        mainAdapter = new MainAdapter(MainActivity.this, arrayList);
-
         recyclerView.setAdapter(mainAdapter);
 
-        ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
-        serverApi.wishInquiry("Bearer" + LoginActivity.accessToken).enqueue(new Callback<ArrayList<GetResponse>>() {
-            @Override
-            public void onResponse(Call<ArrayList<GetResponse>> call, Response<ArrayList<GetResponse>> response) {
-                if(response.isSuccessful()){
-                    arrayList.addAll(response.body());
-                    mainAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<GetResponse>> call, Throwable t) {
-
-            }
-        });
+        fetchFeed();
 
         Button btn_add = (Button) findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 moveSee();
             }
         });
     }
 
-    void Edit(){
-
-    }
 
     void moveSee() {
         Intent intent = new Intent(MainActivity.this, InfoActivity.class);
         startActivity(intent);
     }
 
+    protected void fetchFeed() {
+        ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
+        serverApi.wishInquiry("Bearer " + LoginActivity.accessToken).enqueue(new Callback<FetchFeedResponse>() {
+            @Override
+            public void onResponse(Call<FetchFeedResponse> call, Response<FetchFeedResponse> response) {
+                Log.d("TAG", "123 onResponse: "+response.body().getFeed_list());
 
+                FetchFeedResponse resp = response.body();
+
+                for(int i = 0; i < resp.getFeed_list().size(); i++) {
+                    arrayList.add(resp.getFeed_list().get(i));
+                }
+
+                mainAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<FetchFeedResponse> call, Throwable t) {
+                Log.d("asd", "onFailure: feed");
+            }
+        });
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        fetchFeed();
+    }
 }

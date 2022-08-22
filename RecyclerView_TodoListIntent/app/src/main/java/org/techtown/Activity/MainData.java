@@ -1,22 +1,22 @@
 package org.techtown.Activity;
 
 
+import java.util.List;
+
 public class MainData {
+    private String tiltle;
+    private String content;
 
-
-    private String tv_title;
-    private String tv_content;
-
-    public MainData(String tv_title, String tv_content){
-        this.tv_title = tv_title;
-        this.tv_content = tv_content;
+    public MainData(String title, String contnet){
+        this.tiltle = title;
+        this.content = contnet;
     }
 
-    public String getTv_title() {
-        return tv_title;
+    public String getTiltle() {
+        return tiltle;
     }
 
-    public String getTv_content() {
-        return tv_content;
+    public String getContent() {
+        return content;
     }
 }
