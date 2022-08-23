@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         arrayList = new ArrayList<>();
 
         recyclerView = (RecyclerView) findViewById(R.id.rv);
@@ -74,9 +75,16 @@ public class MainActivity extends AppCompatActivity {
                 FetchFeedResponse resp = response.body();
                 arrayList.clear();
 
+<<<<<<< Updated upstream
                 for (int i = 0; i < resp.getFeed_list().size(); i++) {
                     arrayList.add((resp.getFeed_list().get(i)));
                     
+=======
+                arrayList.clear();
+                for(int i = 0; i < resp.getFeed_list().size(); i++) {
+                    arrayList.add(resp.getFeed_list().get(i));
+
+>>>>>>> Stashed changes
                 }
                 mainAdapter.notifyDataSetChanged();
             }
