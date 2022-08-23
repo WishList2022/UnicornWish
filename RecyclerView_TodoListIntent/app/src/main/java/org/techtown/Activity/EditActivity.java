@@ -122,6 +122,8 @@ public class EditActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){
                     Toast.makeText(EditActivity.this, "Wish가 수정되었습니다", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intent);
                 }
             }
 

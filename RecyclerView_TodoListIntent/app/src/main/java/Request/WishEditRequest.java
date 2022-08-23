@@ -1,6 +1,6 @@
 package Request;
 
-public class wishEditRequest {
+class wishEditRequest {
 
     private String title;
     private String content;

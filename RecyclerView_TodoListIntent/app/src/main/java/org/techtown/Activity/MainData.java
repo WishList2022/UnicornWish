@@ -2,16 +2,16 @@ package org.techtown.Activity;
 
 
 public class MainData {
-    private String tiltle;
+    private String title;
     private String content;
 
     public MainData(String title, String content){
-        this.tiltle = title;
+        this.title = title;
         this.content = content;
     }
 
     public String getTiltle() {
-        return tiltle;
+        return title;
     }
 
     public String getContent() {
