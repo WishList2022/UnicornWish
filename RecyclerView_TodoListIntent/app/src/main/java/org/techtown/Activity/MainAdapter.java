@@ -1,5 +1,6 @@
 package org.techtown.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,40 +21,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         this.arrayList = arrayList;
     }
 
-    @NonNull
-    @Override
-    public MainAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
-        CustomViewHolder holder = new CustomViewHolder(view);
-        return holder;
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull MainAdapter.CustomViewHolder holder, int position) {
-
-        holder.title.setText(arrayList.get(position).getTiltle());
-        holder.content.setText(arrayList.get(position).getContent());
-
-        holder.itemView.setTag(position);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), EditActivity.class);
-                intent.putExtra("title", arrayList.get(position).getTiltle());
-                intent.putExtra("content", arrayList.get(position).getContent());
-
-                v.getContext().startActivity(intent);
-//                holder.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), EditActivity.class));
-//                holder.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), EditActivity.class));
-
-            }
-        });
-    }
-
-    @Override
-    public int getItemCount() {                 // 리스트 사이즈 반환
-        return arrayList.size();
-    }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
@@ -69,6 +36,39 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
 
 
         }
+    }
+
+    @NonNull
+    @Override
+    public MainAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+        return new CustomViewHolder(view);
 
     }
+
+    @Override
+    public void onBindViewHolder(@NonNull MainAdapter.CustomViewHolder holder, @SuppressLint("RecyclerView") int position) {
+
+        holder.title.setText(arrayList.get(position).getTiltle());
+        holder.content.setText(arrayList.get(position).getContent());
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), EditActivity.class);
+                intent.putExtra("title", arrayList.get(position).getTiltle());
+                intent.putExtra("content", arrayList.get(position).getContent());
+
+                v.getContext().startActivity(intent);
+
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {                 // 리스트 사이즈 반환
+        return arrayList.size();
+    }
+
 }

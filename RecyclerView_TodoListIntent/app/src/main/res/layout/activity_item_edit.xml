@@ -101,21 +101,6 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/Delete_btn"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/background_view_nor"
-                    android:text="삭제"
-                    android:textColor="@color/red"
-                    android:textSize="20sp" />
-
-                <Button
                     android:id="@+id/edit_btn_ok"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
@@ -128,6 +113,21 @@
                     android:background="@drawable/background_view_nor"
                     android:text="수정"
                     android:textColor="#6667AB"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/Delete_btn"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/background_view_nor"
+                    android:text="삭제"
+                    android:textColor="@color/red"
                     android:textSize="20sp" />
             </LinearLayout>
 

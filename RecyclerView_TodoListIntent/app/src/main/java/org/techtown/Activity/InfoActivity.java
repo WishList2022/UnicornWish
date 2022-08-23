@@ -69,7 +69,7 @@ public class InfoActivity extends AppCompatActivity {
                     binding.infoEtvTitle.setText("");
                     binding.infoEtvContent.setText("");
 
-                    binding.infoEtvTitle.requestFocus();
+
                     Intent intent1 = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intent1);
                 }

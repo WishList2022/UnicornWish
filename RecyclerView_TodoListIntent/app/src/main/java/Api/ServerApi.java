@@ -2,13 +2,13 @@ package Api;
 
 import org.techtown.Activity.FetchFeedResponse;
 
+import java.util.ArrayList;
+
 import Login.LoginRequest;
 import Login.LoginResponse;
 import Request.EditRequest;
 import Request.TextEditRequest;
-import Request.WishEditRequest;
 import Request.TextPostRequest;
-import Response.GetResponse;
 import Request.WishPostRequest;
 import Register.RegisterRequest;
 import retrofit2.Call;
@@ -53,8 +53,8 @@ public interface ServerApi {
     @PUT("/feed/{feed-id}")//Wish 수정
     Call<Void> WishEdit(
             @Header("Authorization") String accessToken,
-            @Path("feedId") long feedId,
             @Body EditRequest editRequest
+
     );
 
     @POST("/text")// Text 작성

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 import Api.ApiProvider;
@@ -37,9 +38,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.rv);
 
         linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        mainAdapter = new  MainAdapter(arrayList);
+        mainAdapter = new MainAdapter(arrayList);
 
         recyclerView.setLayoutManager(linearLayoutManager);
+
+        mainAdapter = new MainAdapter(arrayList);
+
         recyclerView.setAdapter(mainAdapter);
 
         fetchFeed();
@@ -61,32 +65,35 @@ public class MainActivity extends AppCompatActivity {
 
     protected void fetchFeed() {
         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
+
         serverApi.wishInquiry("Bearer " + LoginActivity.accessToken).enqueue(new Callback<FetchFeedResponse>() {
             @Override
             public void onResponse(Call<FetchFeedResponse> call, Response<FetchFeedResponse> response) {
-                Log.d("TAG", "123 onResponse: "+response.body().getFeed_list());
+                Log.d("TAG", "123 onResponse: " + response.body().getFeed_list());
 
                 FetchFeedResponse resp = response.body();
+                arrayList.clear();
 
-                for(int i = 0; i < resp.getFeed_list().size(); i++) {
-                    arrayList.add(resp.getFeed_list().get(i));
+                for (int i = 0; i < resp.getFeed_list().size(); i++) {
+                    arrayList.add((resp.getFeed_list().get(i)));
+                    
                 }
-
                 mainAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onFailure(Call<FetchFeedResponse> call, Throwable t) {
-                Log.d("asd", "onFailure: feed");
+
             }
         });
     }
 
+        @Override
+        protected void onResume () {
+            super.onResume();
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        fetchFeed();
-    }
+            fetchFeed();
+        }
 }
+
+

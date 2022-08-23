@@ -8,4 +8,5 @@ public class FetchFeedResponse {
     public List<MainData> getFeed_list() {
         return feed_list;
     }
+
 }

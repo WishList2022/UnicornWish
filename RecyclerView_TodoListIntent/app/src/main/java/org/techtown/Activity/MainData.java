@@ -1,15 +1,13 @@
 package org.techtown.Activity;
 
 
-import java.util.List;
-
 public class MainData {
     private String tiltle;
     private String content;
 
-    public MainData(String title, String contnet){
+    public MainData(String title, String content){
         this.tiltle = title;
-        this.content = contnet;
+        this.content = content;
     }
 
     public String getTiltle() {
