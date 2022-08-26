@@ -29,6 +29,7 @@
                 android:text="tv_title"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
+
             <TextView
                 android:id="@+id/tv_content"
                 android:layout_width="match_parent"
@@ -38,6 +39,17 @@
                 android:text="tv_content"
                 android:textColor="@color/gray"
                 android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tv_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:padding="4dp"
+                android:text="Delete"
+                android:textColor="@color/red"
+                android:textSize="24sp" />
+
 
         </LinearLayout>
     </LinearLayout>

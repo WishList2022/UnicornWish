@@ -1,11 +1,12 @@
 package org.techtown.Activity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FetchFeedResponse {
-    private List<MainData> feed_list;
+    private ArrayList<MainData> feed_list;
 
-    public List<MainData> getFeed_list() {
+    public ArrayList<MainData> getFeed_list() {
         return feed_list;
     }
 

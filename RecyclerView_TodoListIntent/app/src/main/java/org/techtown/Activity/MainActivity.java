@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         serverApi.wishInquiry("Bearer " + LoginActivity.accessToken).enqueue(new Callback<FetchFeedResponse>() {
             @Override
             public void onResponse(Call<FetchFeedResponse> call, Response<FetchFeedResponse> response) {
-                Log.d("TAG", "123 onResponse: " + response.body().getFeed_list());
+
 
                 FetchFeedResponse resp = response.body();
                 arrayList.clear();
