@@ -71,7 +71,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
                 Intent intent = new Intent(v.getContext(), EditActivity.class);
                 intent.putExtra("title", arrayList.get(position).getTiltle());
                 intent.putExtra("content", arrayList.get(position).getContent());
-                intent.putExtra("id", arrayList.get(position).getFeedId());
+                intent.putExtra("id", arrayList.get(position).getFeed_id());
 
                 v.getContext().startActivity(intent);
 
@@ -92,7 +92,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
                     public void onClick(DialogInterface dialogInterface, int i) {
                         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
 
-                        serverApi.WishDel("Bearer " + LoginActivity.accessToken, (Integer) arrayList.get(position).getFeedId()).enqueue(new Callback<Void>() {
+                        serverApi.WishDel("Bearer " + LoginActivity.accessToken, (Integer) arrayList.get(position).getFeed_id()).enqueue(new Callback<Void>() {
 
                             @Override
                             public void onResponse(Call<Void> call, Response<Void> response) {

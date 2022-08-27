@@ -44,10 +44,10 @@ public interface ServerApi {
             @Header("Authorization") String accessToken
     );
 
-    @DELETE("/feed/{feedId}")// Wish 삭제
+    @DELETE("/feed/{feed_id}")// Wish 삭제
     Call<Void> WishDel(
             @Header("Authorization") String accessToken,
-            @Path("feedId") Integer feedId
+            @Path("feed_id") int feed_id
     );
 
 
@@ -55,7 +55,7 @@ public interface ServerApi {
     Call<Void> WishEdit(
             @Header("Authorization") String accessToken,
             @Body EditRequest editRequest,
-            @Path("feed_id") int feedId
+            @Path("feed_id") int feed_id
 
     );
 

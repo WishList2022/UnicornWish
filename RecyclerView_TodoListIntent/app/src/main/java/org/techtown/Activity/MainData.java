@@ -4,12 +4,12 @@ package org.techtown.Activity;
 public class MainData {
     private String title;
     private String content;
-    private int feedId;
+    private int feed_id;
 
-    public MainData(String title, String content, int feedId){
+    public MainData(String title, String content, int feed_id){
         this.title = title;
         this.content = content;
-        this.feedId = feedId;
+        this.feed_id = feed_id;
     }
 
     public String getTiltle() {
@@ -20,7 +20,7 @@ public class MainData {
         return content;
     }
 
-    public int getFeedId() {
-        return feedId;
+    public int getFeed_id() {
+        return feed_id;
     }
 }
