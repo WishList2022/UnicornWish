@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:backgroundTint="@color/background_nor"
-                android:hint="자신이 원하는 문구를 적어보세요!"
+                android:hint="시련은 없어도 실패는 없다. -정주영-"
                 android:textAlignment="center">
 
 

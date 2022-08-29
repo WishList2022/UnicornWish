@@ -73,6 +73,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
                 intent.putExtra("content", arrayList.get(position).getContent());
                 intent.putExtra("id", arrayList.get(position).getFeed_id());
 
+                
                 v.getContext().startActivity(intent);
 
             }
