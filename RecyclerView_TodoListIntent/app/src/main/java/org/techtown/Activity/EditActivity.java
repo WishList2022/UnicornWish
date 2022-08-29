@@ -1,6 +1,7 @@
 package org.techtown.Activity;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -52,20 +53,17 @@ public class EditActivity extends AppCompatActivity {
                 Editcheck();
             }
         });
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-
     }
 
-    public void Editcheck() {
-        String title = binding.editEtvTitle.getText().toString();
-        String contnet = binding.editEtvContent.getText().toString();
 
-        if (title.length() == 0 || contnet.length() == 0) {
+        public void Editcheck(){
+        String title = binding.editEtvTitle.getText().toString();
+        String content = binding.editEtvTitle.getText().toString();
+
+        if (title.length() == 0 || content.length() == 0){
             Toast.makeText(EditActivity.this, "내용을 수정해주세요", Toast.LENGTH_SHORT).show();
-        } else {
+        }
+        else{
             EditPost();
         }
     }
@@ -87,9 +85,7 @@ public class EditActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 }
-
             }
-
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(EditActivity.this, "저도 모르겠네요..", Toast.LENGTH_SHORT).show();
@@ -98,3 +94,4 @@ public class EditActivity extends AppCompatActivity {
         });
     }
 }
+
