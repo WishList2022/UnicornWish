@@ -118,6 +118,12 @@
                         android:textColor="@color/gray"
                         android:textSize="20sp" />
 
+                    <CheckBox
+                        android:id="@+id/Autologgin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="아이디 저장하기"
+                        android:textColor="@color/gray" />
                     <Button
                         android:id="@+id/btn_login"
                         android:layout_width="match_parent"
@@ -134,7 +140,7 @@
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
-
+                    
                     <TextView
                         android:id="@+id/tv_login_register"
                         android:layout_width="match_parent"
@@ -144,6 +150,8 @@
                         android:gravity="center"
                         android:text="아직 계정이 없다면?"
                         android:textColor="@color/gray" />
+
+
                 </LinearLayout>
 
             </LinearLayout>
