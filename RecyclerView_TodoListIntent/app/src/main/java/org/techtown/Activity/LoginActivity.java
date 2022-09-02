@@ -1,9 +1,13 @@
 package org.techtown.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,12 +27,35 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     public static String accessToken;
 
+    public static SharedPreferences preferences;
+    public static SharedPreferences.Editor editor;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+
+        preferences = getSharedPreferences("User",MODE_PRIVATE);
+        editor = preferences.edit();
+
+
+
+        // 자동 로그인
+        if (preferences.getBoolean("Check", false) == true){
+            AutoLogin();
+            binding.Autologgin.setChecked(true);
+            binding.etLoginTypeID.setText(preferences.getString("id", ""));
+            binding.etLoginTypePW.setText(preferences.getString("pw", ""));
+
+        }
+
+
+        // 회원가입 Activity로 이동
         binding.tvLoginRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,16 +64,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Login 클릭 리스너
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Singin();
+                Singincheck();
             }
         });
     }
 
 
-    private void Singin() {
+    private void Singincheck() {
         String account_id = binding.etLoginTypeID.getText().toString();
         String password = binding.etLoginTypePW.getText().toString();
 
@@ -55,14 +83,14 @@ public class LoginActivity extends AppCompatActivity {
         } else if (password.length() == 0) {
             Toast.makeText(LoginActivity.this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show();
         } else {
-            LoginResponse(account_id, password);
+            Login(account_id, password);
             Log.d(TAG, "account_id: " + account_id);
             Log.d(TAG, "password: " + password);
         }
     }
 
 
-    public void LoginResponse(String account_id, String password) {
+    public void Login(String account_id, String password) {
 
         Log.d(TAG, "LoginResponse: 실행됨");
         LoginRequest loginRequest = new LoginRequest(account_id, password);
@@ -87,6 +115,35 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void AutoLogin(){
+        String account_id = preferences.getString("id","");
+        String password = preferences.getString("pw", "");
+        LoginRequest loginRequest = new LoginRequest(account_id, password);
+        ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
+        serverApi.login(loginRequest).enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                accessToken = response.body().getAccessToken();
+
+                if (binding.Autologgin.isChecked()){
+                    editor.putBoolean("check",true).commit();
+                    editor.putString("id", account_id).commit();
+                    editor.putString("pw", password).commit();
+                }
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+                Toast.makeText(LoginActivity.this, "🎉로그인에 성공했습니다!🎉", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+
+            }
+        });
+
     }
 }
 
