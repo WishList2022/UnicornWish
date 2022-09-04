@@ -16,6 +16,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -72,6 +73,11 @@ public interface ServerApi {
             @Body TextEditRequest textEditRequest
     );
 
+    @PATCH("/feed/{feed_id}") // Wish 완료 여부
+    Call<Void> Wishok(
+            @Header("Authorization") String accessToken,
+            @Path("feedId") Integer feedId
+    );
 
 }
 
