@@ -53,6 +53,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <Button
+                android:id="@+id/btn_checkDel"
+                android:layout_width="98dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Delete"
+                android:background="@drawable/background_button_add_wish"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toStartOf="@+id/btn_add"
+                tools:layout_editor_absoluteY="10dp" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
@@ -69,7 +80,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv"
                 android:layout_width="match_parent"
-                android:layout_height="484dp"
+                android:layout_height="436dp"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
                 android:scrollbars="vertical"
@@ -79,16 +90,14 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
-            <EditText
+            <TextView
                 android:id="@+id/typeMemo"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:backgroundTint="@color/background_nor"
                 android:hint="시련은 없어도 실패는 없다. -정주영-"
                 android:textAlignment="center">
-
-
-            </EditText>
+            </TextView>
 
         </LinearLayout>
 

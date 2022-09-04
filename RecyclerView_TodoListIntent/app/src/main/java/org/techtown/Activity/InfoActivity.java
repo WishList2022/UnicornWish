@@ -53,7 +53,6 @@ public class InfoActivity extends AppCompatActivity {
 
     }
 
-
     private  void Post(){
         String title =  binding.infoEtvTitle.getText().toString();
         String content = binding.infoEtvContent.getText().toString();
