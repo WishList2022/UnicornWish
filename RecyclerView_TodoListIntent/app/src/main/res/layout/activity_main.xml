@@ -55,14 +55,14 @@
 
             <Button
                 android:id="@+id/btn_checkDel"
-                android:layout_width="98dp"
-                android:layout_height="40dp"
+                android:layout_width="90dp"
+                android:layout_height="62dp"
                 android:layout_gravity="center_horizontal"
-                android:text="Delete"
                 android:background="@drawable/background_button_add_wish"
+                android:text="Delete"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/btn_add"
-                tools:layout_editor_absoluteY="10dp" />
+                tools:layout_editor_absoluteY="-1dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -96,8 +96,20 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/background_nor"
                 android:hint="시련은 없어도 실패는 없다. -정주영-"
-                android:textAlignment="center">
-            </TextView>
+                android:paddingBottom="20dp"
+                android:translationY="40dp"
+                android:textAlignment="center"></TextView>
+
+            <Button
+                android:id="@+id/All_Check"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="전체 선택"
+                android:translationY="40dp">
+
+
+            </Button>
+
 
         </LinearLayout>
 
