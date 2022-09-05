@@ -49,6 +49,20 @@ public class MainActivity extends AppCompatActivity {
 
         fetchFeed();
 
+
+        // 전체체크 삭제
+//        Button All_Check = (Button) findViewById(R.id.All_Check);
+//        All_Check.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                int cnt = mainAdapter.getItemCount();
+//
+//                for(int i = 0; i<cnt; i++){
+//
+//                }
+//            }
+//        });
+
         Button btn_add = (Button) findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     void moveSee() {
         Intent intent = new Intent(MainActivity.this, InfoActivity.class);
@@ -74,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
                 FetchFeedResponse resp = response.body();
                 arrayList.clear();
+
 
                 for (int i = 0; i < resp.getFeed_list().size(); i++) {
                     arrayList.add((resp.getFeed_list().get(i)));
