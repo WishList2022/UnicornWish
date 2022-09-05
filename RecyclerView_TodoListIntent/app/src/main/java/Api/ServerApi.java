@@ -76,7 +76,7 @@ public interface ServerApi {
     @PATCH("/feed/{feed_id}") // Wish 완료 여부
     Call<Void> Wishok(
             @Header("Authorization") String accessToken,
-            @Path("feedId") Integer feedId
+            @Path("feed_id") int feed_id
     );
 
 }
