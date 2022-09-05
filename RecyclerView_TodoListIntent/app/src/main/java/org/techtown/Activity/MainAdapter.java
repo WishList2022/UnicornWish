@@ -3,16 +3,20 @@ package org.techtown.Activity;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
@@ -39,14 +43,19 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         public TextView title;
         public TextView content;
         public TextView delete;
+        public CheckBox Wishok;
+        public Button button;
+        public CardView cardView;
+
 
         public CustomViewHolder(View itemView) {
             super(itemView);
 
-            this.title = (TextView) itemView.findViewById(R.id.tv_title);
-            this.content = (TextView) itemView.findViewById(R.id.tv_content);
-            this.delete = (TextView) itemView.findViewById(R.id.tv_delete);
-
+            title = itemView.findViewById(R.id.tv_title);
+            content = itemView.findViewById(R.id.tv_content);
+            delete = itemView.findViewById(R.id.tv_delete);
+            Wishok = itemView.findViewById(R.id.checkBox);
+            cardView = itemView.findViewById(R.id.cardView);
         }
     }
 
@@ -64,6 +73,56 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         holder.title.setText(arrayList.get(position).getTiltle());
         holder.content.setText(arrayList.get(position).getContent());
 
+        holder.Wishok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("TAG", "onClick: "+holder.Wishok.isChecked());
+            }
+        });
+
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+
+                builder.setTitle("Wish 달성");
+                builder.setMessage("Wish를 달성했습니까?");
+
+                builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        holder.cardView.setBackgroundColor(Color.parseColor("#C7DEEC"));
+                    }
+                });
+
+
+
+                builder.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        holder.cardView.setBackgroundColor(Color.parseColor("#E3E3E3"));
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+                return false;
+            }
+        });
+
+//        완료 / 미완료 Check version
+//        holder.Wishok.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(holder.Wishok.isChecked()){
+//                    holder.cardView.setBackgroundColor(Color.parseColor("#C7DEEC"));
+//                }else {
+//                    holder.cardView.setBackgroundColor(Color.parseColor("#E3E3E3"));
+//                }
+//            }
+//        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +137,22 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
 
             }
         });
+
+
+        holder.Wishok.setChecked(new Boolean(false) == true);{
+            ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
+            serverApi.Wishok("Bearer " + LoginActivity.accessToken, arrayList.get(position).getFeed_id()).enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+
+                }
+            });
+        }
 
 
         holder.delete.setOnClickListener(new View.OnClickListener() {
@@ -119,11 +194,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
                 });
 
                 AlertDialog dialog = builder.create();
-            dialog.show();
+                dialog.show();
 
             }
         });
     }
+
 
 
 
