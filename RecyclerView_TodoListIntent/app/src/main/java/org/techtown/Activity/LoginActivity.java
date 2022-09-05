@@ -105,6 +105,12 @@ public class LoginActivity extends AppCompatActivity {
                  Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                  startActivity(intent);
                  Log.d(TAG,"onResponse: "+ response.code());
+
+                 if(binding.Autologgin.isChecked()){
+                     editor.putBoolean("Check", true).apply();
+                     editor.putString("id", account_id).apply();
+                     editor.putString("pw", password).apply();
+                 }
              }
             }
 
