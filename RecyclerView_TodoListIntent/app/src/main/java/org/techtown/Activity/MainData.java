@@ -6,6 +6,7 @@ public class MainData {
     private String content;
     private int feed_id;
 
+
     public MainData(String title, String content, int feed_id){
         this.title = title;
         this.content = content;

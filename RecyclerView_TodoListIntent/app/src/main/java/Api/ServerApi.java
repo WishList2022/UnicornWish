@@ -79,6 +79,11 @@ public interface ServerApi {
             @Path("feed_id") int feed_id
     );
 
+    @DELETE("/feed/all") // Wish 전체 삭제
+    Call<Void> WishAll(
+            @Header("Authorization") String accessToken
+    );
+
 }
 
 
