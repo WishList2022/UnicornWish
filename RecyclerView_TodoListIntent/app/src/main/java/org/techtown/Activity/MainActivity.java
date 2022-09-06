@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -51,17 +52,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         // 전체체크 삭제
-//        Button All_Check = (Button) findViewById(R.id.All_Check);
-//        All_Check.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                int cnt = mainAdapter.getItemCount();
-//
-//                for(int i = 0; i<cnt; i++){
-//
-//                }
-//            }
-//        });
+        Button All_Check = (Button) findViewById(R.id.All_Check);
+        All_Check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Allcheck();
+            }
+        });
+
+
+
 
         Button btn_add = (Button) findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +71,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    private void Allcheck(){
+        ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
+        serverApi.WishAll("Bearer " + LoginActivity.accessToken).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                arrayList.clear();
+                mainAdapter.notifyDataSetChanged();
+                Toast.makeText(MainActivity.this, "Wish가 모두 삭제되었습니다!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "이정호 이Zi발~~", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+
+
+
 
     void moveSee() {
         Intent intent = new Intent(MainActivity.this, InfoActivity.class);
@@ -101,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
         @Override
         protected void onResume () {

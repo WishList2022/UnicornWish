@@ -80,7 +80,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv"
                 android:layout_width="match_parent"
-                android:layout_height="436dp"
+                android:layout_height="433dp"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
                 android:scrollbars="vertical"
@@ -95,9 +95,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/background_nor"
-                android:hint="시련은 없어도 실패는 없다. -정주영-"
+                android:hint="어떤 일을 하기에 앞서 스스로 그 일에 대한 기대를 가져야 한다  -Michael Jorden- "
                 android:paddingBottom="20dp"
-                android:translationY="40dp"
+                android:translationY="20dp"
                 android:textAlignment="center"></TextView>
 
             <Button
@@ -105,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="전체 선택"
-                android:translationY="40dp">
+                android:translationY="34dp">
 
 
             </Button>

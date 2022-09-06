@@ -46,6 +46,13 @@ public class EditActivity extends AppCompatActivity {
         binding.editEtvTitle.setText(title);
         binding.editEtvContent.setText(content);
 
+        binding.editBtnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(in);
+            }
+        });
 
         binding.editBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
