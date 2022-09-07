@@ -28,7 +28,7 @@ import retrofit2.Response;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
     static ArrayList<MainData> arrayList;
-    static ArrayList<Integer> deleteList;
+    public static ArrayList<Integer> deleteList;
     final String TAG = "Adapter";
 
     public MainAdapter(ArrayList<MainData> arrayList) {
@@ -171,20 +171,20 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
     static public void startRemoveList() {
         Log.d("AdapterAdapter", "startRemoveList: ");
         for (int i = 0; i < deleteList.size(); i++) {
-            removeList(i);
+            Log.d("MainAdapter", "" + deleteList.get(i));
+            removeList(deleteList.get(i));
         }
     }
 
-    static void removeList(int position) {ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
+    static void removeList(int position) {
+        ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
 
-        serverApi.WishDel("Bearer " + LoginActivity.accessToken, (Integer) arrayList.get(position).getFeed_id()).enqueue(new Callback<Void>() {
+        serverApi.WishDel("Bearer " + LoginActivity.accessToken, position).enqueue(new Callback<Void>() {
 
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Log.d("TAG", "onResponse: " + response.code());
                 if (response.isSuccessful()) {
-                    removeList(position);
-                    arrayList.remove(position);
                     clearList();
                 }
             }
