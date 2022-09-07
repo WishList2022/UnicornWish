@@ -27,9 +27,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
-    final String TAG = "Adapter";
     static ArrayList<MainData> arrayList;
     static ArrayList<Integer> deleteList;
+    final String TAG = "Adapter";
 
     public MainAdapter(ArrayList<MainData> arrayList) {
         this.arrayList = arrayList;
@@ -56,11 +56,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
                 if (isChecked) {
                     deleteList.add(arrayList.get(position).getFeed_id());
                     Log.d(TAG, "onClick: " + holder.chk_item.isChecked());
-                    Log.d(TAG, "" + deleteList);
-                } else {
-                    deleteList.remove(arrayList.get(position).getFeed_id());
-                    Log.d(TAG, "" + deleteList);
+                } else if (!isChecked) {
+                    deleteList.remove(Integer.valueOf(arrayList.get(position).getFeed_id()));
+
                 }
+                Log.d(TAG, "" + deleteList);
             }
         });
 
