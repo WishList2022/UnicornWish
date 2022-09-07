@@ -22,8 +22,8 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<MainData> arrayList;
-    private MainAdapter mainAdapter;
+    static ArrayList<MainData> arrayList;
+    static MainAdapter mainAdapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
 
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    protected void fetchFeed() {
+    static void fetchFeed() {
         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
 
         serverApi.wishInquiry("Bearer " + LoginActivity.accessToken).enqueue(new Callback<FetchFeedResponse>() {

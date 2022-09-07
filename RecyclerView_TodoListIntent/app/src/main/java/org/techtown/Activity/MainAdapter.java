@@ -185,6 +185,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
                 if (response.isSuccessful()) {
                     removeList(position);
                     arrayList.remove(position);
+                    clearList();
                 }
             }
 
@@ -192,6 +193,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
             public void onFailure(Call<Void> call, Throwable t) {
             }
         });
+    }
+
+    private static void clearList() {
+        arrayList.clear();
+        MainActivity.fetchFeed();
     }
 
     @Override
