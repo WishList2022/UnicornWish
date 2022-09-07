@@ -6,14 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 import Api.ApiProvider;
 import Api.ServerApi;
@@ -52,15 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         // 전체체크 삭제
-        Button All_Check = (Button) findViewById(R.id.All_Check);
+        Button All_Check = (Button) findViewById(R.id.btn_remove_selected);
         All_Check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Allcheck();
             }
         });
-
-
 
 
         Button btn_add = (Button) findViewById(R.id.btn_add);
@@ -73,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void Allcheck(){
+    private void Allcheck() {
         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
         serverApi.WishAll("Bearer " + LoginActivity.accessToken).enqueue(new Callback<Void>() {
             @Override
@@ -90,9 +84,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-
-
 
 
     void moveSee() {
@@ -126,12 +117,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-        @Override
-        protected void onResume () {
-            super.onResume();
-
-            fetchFeed();
-        }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchFeed();
+    }
 }
 
 

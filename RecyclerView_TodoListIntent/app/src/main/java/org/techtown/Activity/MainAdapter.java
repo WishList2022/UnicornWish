@@ -8,9 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,8 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -30,33 +27,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
-
-    private ArrayList<MainData> arrayList;
+    final String TAG = "Adapter";
+    static ArrayList<MainData> arrayList;
+    static ArrayList<Integer> deleteList;
 
     public MainAdapter(ArrayList<MainData> arrayList) {
         this.arrayList = arrayList;
-    }
-
-
-    public class CustomViewHolder extends RecyclerView.ViewHolder {
-
-        public TextView title;
-        public TextView content;
-        public TextView delete;
-        public CheckBox Wishok;
-        public Button button;
-        public CardView cardView;
-
-
-        public CustomViewHolder(View itemView) {
-            super(itemView);
-
-            title = itemView.findViewById(R.id.tv_title);
-            content = itemView.findViewById(R.id.tv_content);
-            delete = itemView.findViewById(R.id.tv_delete);
-            Wishok = itemView.findViewById(R.id.checkBox);
-            cardView = itemView.findViewById(R.id.cardView);
-        }
+        deleteList = new ArrayList<>();
     }
 
     @NonNull
@@ -64,7 +41,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
     public MainAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
         return new CustomViewHolder(view);
-
     }
 
     @Override
@@ -72,11 +48,19 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
 
         holder.title.setText(arrayList.get(position).getTiltle());
         holder.content.setText(arrayList.get(position).getContent());
+        Log.d(TAG, "id : " + arrayList.get(position).getFeed_id() + " title : " + arrayList.get(position).getTiltle());
 
-        holder.Wishok.setOnClickListener(new View.OnClickListener() {
+        holder.chk_item.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-                Log.d("TAG", "onClick: "+holder.Wishok.isChecked());
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    deleteList.add(arrayList.get(position).getFeed_id());
+                    Log.d(TAG, "onClick: " + holder.chk_item.isChecked());
+                    Log.d(TAG, "" + deleteList);
+                } else {
+                    deleteList.remove(arrayList.get(position).getFeed_id());
+                    Log.d(TAG, "" + deleteList);
+                }
             }
         });
 
@@ -95,7 +79,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
                         holder.cardView.setBackgroundColor(Color.parseColor("#C7DEEC"));
                     }
                 });
-
 
 
                 builder.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
@@ -124,6 +107,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
 //            }
 //        });
 
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,14 +116,15 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
                 intent.putExtra("content", arrayList.get(position).getContent());
                 intent.putExtra("id", arrayList.get(position).getFeed_id());
 
-                
+
                 v.getContext().startActivity(intent);
 
             }
         });
 
 
-        holder.Wishok.setChecked(new Boolean(false) == true);{
+        holder.chk_item.setChecked(new Boolean(false) == true);
+        {
             ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
             serverApi.Wishok("Bearer " + LoginActivity.accessToken, arrayList.get(position).getFeed_id()).enqueue(new Callback<Void>() {
                 @Override
@@ -200,12 +185,29 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         });
     }
 
-
-
-
     @Override
     public int getItemCount() {                 // 리스트 사이즈 반환
         return arrayList.size();
+    }
+
+    public class CustomViewHolder extends RecyclerView.ViewHolder {
+
+        public TextView title;
+        public TextView content;
+        public TextView delete;
+        public CheckBox chk_item;
+        public CardView cardView;
+
+
+        public CustomViewHolder(View itemView) {
+            super(itemView);
+
+            title = itemView.findViewById(R.id.tv_title);
+            content = itemView.findViewById(R.id.tv_content);
+            delete = itemView.findViewById(R.id.tv_delete);
+            chk_item = itemView.findViewById(R.id.checkBox);
+            cardView = itemView.findViewById(R.id.cardView);
+        }
     }
 
 }

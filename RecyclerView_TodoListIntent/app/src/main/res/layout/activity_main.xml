@@ -101,10 +101,10 @@
                 android:textAlignment="center"></TextView>
 
             <Button
-                android:id="@+id/All_Check"
+                android:id="@+id/btn_remove_selected"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="전체 선택"
+                android:text="선택 삭제"
                 android:translationY="34dp">
 
 
