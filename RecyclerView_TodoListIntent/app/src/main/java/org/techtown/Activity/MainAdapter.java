@@ -118,7 +118,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
 
 
                 v.getContext().startActivity(intent);
-
             }
         });
 
@@ -151,24 +150,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
                 builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
+                        removeList(position);
+                        notifyDataSetChanged();
 
-                        serverApi.WishDel("Bearer " + LoginActivity.accessToken, (Integer) arrayList.get(position).getFeed_id()).enqueue(new Callback<Void>() {
-
-                            @Override
-                            public void onResponse(Call<Void> call, Response<Void> response) {
-                                Log.d("TAG", "onResponse: " + response.code());
-                                if (response.isSuccessful()) {
-                                    removeList(position);
-                                    Toast.makeText(view.getContext(), "Wish가 삭제됐습니다!", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<Void> call, Throwable t) {
-                                Toast.makeText(view.getContext(), "죄송합니다..", Toast.LENGTH_SHORT).show();
-                            }
-                        });
                     }
                 }).setNegativeButton("아니요", new DialogInterface.OnClickListener() {
                     @Override
@@ -191,8 +175,23 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         }
     }
 
-    static void removeList(int position) {
-        arrayList.remove(position);
+    static void removeList(int position) {ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
+
+        serverApi.WishDel("Bearer " + LoginActivity.accessToken, (Integer) arrayList.get(position).getFeed_id()).enqueue(new Callback<Void>() {
+
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d("TAG", "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    removeList(position);
+                    arrayList.remove(position);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+            }
+        });
     }
 
     @Override
