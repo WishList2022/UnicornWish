@@ -159,8 +159,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
                             public void onResponse(Call<Void> call, Response<Void> response) {
                                 Log.d("TAG", "onResponse: " + response.code());
                                 if (response.isSuccessful()) {
-                                    arrayList.remove(position);
-                                    notifyItemRemoved(position);
+                                    removeList(position);
                                     Toast.makeText(view.getContext(), "Wish가 삭제됐습니다!", Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -183,6 +182,17 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
 
             }
         });
+    }
+
+    static public void startRemoveList() {
+        Log.d("AdapterAdapter", "startRemoveList: ");
+        for (int i = 0; i < deleteList.size(); i++) {
+            removeList(i);
+        }
+    }
+
+    static void removeList(int position) {
+        arrayList.remove(position);
     }
 
     @Override

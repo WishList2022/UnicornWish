@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -47,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
 
         fetchFeed();
 
-
-        // 전체체크 삭제
-        Button All_Check = (Button) findViewById(R.id.btn_remove_selected);
-        All_Check.setOnClickListener(new View.OnClickListener() {
+        Button removeSelected = (Button) findViewById(R.id.btn_remove_selected);
+        removeSelected.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                Log.d("MainActivity", "onClick: ");
+                mainAdapter.startRemoveList();
             }
         });
 
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("MainActivity", "onClick: add ");
                 moveSee();
             }
         });
