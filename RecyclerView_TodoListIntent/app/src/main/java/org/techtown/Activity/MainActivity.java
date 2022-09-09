@@ -1,15 +1,15 @@
 package org.techtown.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -27,11 +27,35 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
 
+    static void fetchFeed() {
+        ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
+
+        serverApi.wishInquiry("Bearer " + LoginActivity.accessToken).enqueue(new Callback<FetchFeedResponse>() {
+            @Override
+            public void onResponse(Call<FetchFeedResponse> call, Response<FetchFeedResponse> response) {
+
+
+                FetchFeedResponse resp = response.body();
+                arrayList.clear();
+
+
+                for (int i = 0; i < resp.getFeed_list().size(); i++) {
+                    arrayList.add((resp.getFeed_list().get(i)));
+                }
+                mainAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<FetchFeedResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         arrayList = new ArrayList<>();
 
@@ -68,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     private void Allcheck() {
         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
         serverApi.WishAll("Bearer " + LoginActivity.accessToken).enqueue(new Callback<Void>() {
@@ -87,37 +110,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     void moveSee() {
         Intent intent = new Intent(MainActivity.this, InfoActivity.class);
         startActivity(intent);
     }
-
-    static void fetchFeed() {
-        ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
-
-        serverApi.wishInquiry("Bearer " + LoginActivity.accessToken).enqueue(new Callback<FetchFeedResponse>() {
-            @Override
-            public void onResponse(Call<FetchFeedResponse> call, Response<FetchFeedResponse> response) {
-
-
-                FetchFeedResponse resp = response.body();
-                arrayList.clear();
-
-
-                for (int i = 0; i < resp.getFeed_list().size(); i++) {
-                    arrayList.add((resp.getFeed_list().get(i)));
-                }
-                mainAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<FetchFeedResponse> call, Throwable t) {
-
-            }
-        });
-    }
-
 
     @Override
     protected void onResume() {

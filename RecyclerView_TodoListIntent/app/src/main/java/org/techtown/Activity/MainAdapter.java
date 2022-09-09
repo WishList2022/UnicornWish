@@ -121,24 +121,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
             }
         });
 
-
-        holder.chk_item.setChecked(new Boolean(false) == true);
-        {
-            ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
-            serverApi.Wishok("Bearer " + LoginActivity.accessToken, arrayList.get(position).getFeed_id()).enqueue(new Callback<Void>() {
-                @Override
-                public void onResponse(Call<Void> call, Response<Void> response) {
-
-                }
-
-                @Override
-                public void onFailure(Call<Void> call, Throwable t) {
-
-                }
-            });
-        }
-
-
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

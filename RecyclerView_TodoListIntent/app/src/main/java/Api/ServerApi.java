@@ -73,12 +73,6 @@ public interface ServerApi {
             @Body TextEditRequest textEditRequest
     );
 
-    @PATCH("/feed/{feed_id}") // Wish 완료 여부
-    Call<Void> Wishok(
-            @Header("Authorization") String accessToken,
-            @Path("feed_id") int feed_id
-    );
-
     @DELETE("/feed/all") // Wish 전체 삭제
     Call<Void> WishAll(
             @Header("Authorization") String accessToken
