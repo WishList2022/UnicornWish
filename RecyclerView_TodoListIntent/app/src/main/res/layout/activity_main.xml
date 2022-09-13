@@ -68,7 +68,6 @@
                 android:layout_height="62dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/background_button_add_wish"
-                android:text="Delete"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/btn_add"
                 tools:layout_editor_absoluteY="0dp" />

@@ -35,6 +35,12 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
+        binding.infoBtnCancel.setOnClickListener(v -> {
+            Intent intent = new Intent(getBaseContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
     }
 
     private void POSTcheck(){
@@ -86,6 +92,7 @@ public class InfoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

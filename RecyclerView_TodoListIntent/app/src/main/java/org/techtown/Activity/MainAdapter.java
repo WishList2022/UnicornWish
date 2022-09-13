@@ -180,7 +180,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
                 builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        removeList(position);
+                        removeList(arrayList.get(position).getFeed_id());
                         notifyDataSetChanged();
 
                     }
