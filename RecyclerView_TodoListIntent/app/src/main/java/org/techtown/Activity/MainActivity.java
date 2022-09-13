@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.CheckBox;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     static MainAdapter mainAdapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
+    CheckBox chk_selectAll;
 
     static void fetchFeed() {
         ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
@@ -33,11 +34,8 @@ public class MainActivity extends AppCompatActivity {
         serverApi.wishInquiry("Bearer " + LoginActivity.accessToken).enqueue(new Callback<FetchFeedResponse>() {
             @Override
             public void onResponse(Call<FetchFeedResponse> call, Response<FetchFeedResponse> response) {
-
-
                 FetchFeedResponse resp = response.body();
                 arrayList.clear();
-
 
                 for (int i = 0; i < resp.getFeed_list().size(); i++) {
                     arrayList.add((resp.getFeed_list().get(i)));
@@ -78,9 +76,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("MainActivity", "onClick: ");
                 mainAdapter.startRemoveList();
+                chk_selectAll.setChecked(false);
             }
         });
 
+
+        chk_selectAll = findViewById(R.id.chk_main);
+        chk_selectAll.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                mainAdapter.selectAll();
+                mainAdapter.notifyDataSetChanged();
+            } else {
+                mainAdapter.unSelectAll();
+                mainAdapter.notifyDataSetChanged();
+            }
+        });
 
         Button btn_add = (Button) findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
@@ -90,24 +100,6 @@ public class MainActivity extends AppCompatActivity {
                 moveSee();
             }
         });
-    }
-
-    private void Allcheck() {
-        ServerApi serverApi = ApiProvider.getRetrofit().create(ServerApi.class);
-        serverApi.WishAll("Bearer " + LoginActivity.accessToken).enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                arrayList.clear();
-                mainAdapter.notifyDataSetChanged();
-                Toast.makeText(MainActivity.this, "Wish가 모두 삭제되었습니다!", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "이정호 이Zi발~~", Toast.LENGTH_SHORT).show();
-            }
-        });
-
     }
 
     void moveSee() {

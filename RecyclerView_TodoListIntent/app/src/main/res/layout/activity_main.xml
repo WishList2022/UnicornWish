@@ -26,9 +26,18 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints,NotSibling">
 
+            <CheckBox
+                android:id="@+id/chk_main"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_todolist"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/tv_todolist"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="WishList"
@@ -36,8 +45,8 @@
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btn_add"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_checkDel"
+                app:layout_constraintStart_toStartOf="@id/chk_main"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -62,7 +71,7 @@
                 android:text="Delete"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/btn_add"
-                tools:layout_editor_absoluteY="-1dp" />
+                tools:layout_editor_absoluteY="0dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -71,11 +80,11 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@drawable/backround_list_body"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_linearlayout"
-            android:orientation="vertical">
+            app:layout_constraintTop_toBottomOf="@+id/title_linearlayout">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv"
@@ -97,8 +106,8 @@
                 android:backgroundTint="@color/background_nor"
                 android:hint="어떤 일을 하기에 앞서 스스로 그 일에 대한 기대를 가져야 한다  -Michael Jorden- "
                 android:paddingBottom="20dp"
-                android:translationY="20dp"
-                android:textAlignment="center"></TextView>
+                android:textAlignment="center"
+                android:translationY="20dp"></TextView>
 
             <Button
                 android:id="@+id/btn_remove_selected"
